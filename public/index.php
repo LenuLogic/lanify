@@ -1,6 +1,9 @@
 <?php
+// Suoritetaan projektin alustusskripti:
+require_once '../src/init.php';
+
 /*Tämä siistii urlin lyhemmäksi, ettei tuu järkkypitkää.*/ 
-$request=str_replace('/~lkevatky/lanify', '',$SERVER['REQUEST_URI']);
+$request=str_replace($config['urls']['baseUrl'],'',$SERVER['REQUEST_URI']);
 $request=strtok($request,'?');
 
 
