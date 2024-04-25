@@ -7,7 +7,7 @@ $request=str_replace($config['urls']['baseUrl'],'',$_SERVER['REQUEST_URI']);
 $request=strtok($request,'?');
 
 //Luodaan uusi Plates-olio ja kytketään se sivupohjaan:
-$templates = new League\Plates\Engine('../src/view'); // Kokeilen vaihtaa kenoviivat - ei
+$templates = new League\Plates\Engine(TEMPLATE_DIR); 
 
 //Selvitetään kutsuttu sivu ja suoritetaan sitä vastaava käsittelijä:
 if ($request === '/' || $request === '/tapahtumat') {
