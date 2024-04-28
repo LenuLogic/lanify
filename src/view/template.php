@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lanify - <?=$this->e($title)?></title>
+    <link href="styles/styles.css" rel="stylesheet">
 </head>
 <body>
     <header>
