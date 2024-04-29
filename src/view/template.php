@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1>Lanify</h1>
+        <h1><a href="<?=BASEURL?>">Lanify</a></h1>
     </header>
     <section>
         <?=$this->section('content')?>
