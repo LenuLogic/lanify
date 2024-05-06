@@ -10,7 +10,7 @@ function cleanArrayData($array=[]) {
     return $result;
 }
 
-function getValue($key, $values) { //$val ja $key oli alunperin toisin päin.
+function getValue($values, $key) { //$key-$val-järjestys tuottaa virheen.
     if (array_key_exists($key, $values)) {
         return htmlspecialchars($values[$key]);
     } else {
