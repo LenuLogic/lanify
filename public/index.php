@@ -42,8 +42,17 @@ switch ($request) {
         break;
         }
     case '/kirjaudu':
-        echo $templates->render('kirjaudu', ['error' => []]);
-        break;
+        if (isset($_POST['laheta'])) {
+            require_once CONTROLLER_DIR . 'kirjaudu.php';
+            if (tarkistaKirjautuminen($_POST['email'],$_POST['salasana'])) {
+                echo "Kirjautuminen ok!";
+            } else {
+                echo $templates->render('kirjaudu', ['error' => ['virhe' => 'Väärä käyttäjätunnus tai salasana!']]);
+                }
+        } else {
+            echo $templates->render('kirjaudu', ['error' => []]);
+        }
+            break;
     default:
         echo $templates->render('notfound');
 }
@@ -51,23 +60,8 @@ switch ($request) {
 ?>
 
 
-
-<!--
-    VANHA IF... ELSE IF -RAKENNE
-if ($request === '/' || $request === '/tapahtumat') {
-    require_once MODEL_DIR . 'tapahtuma.php';
-    $tapahtumat = haeTapahtumat();
-    echo $templates->render('tapahtumat', ['tapahtumat' => $tapahtumat]); 
-} else if ($request === '/tapahtuma') {
-    require_once MODEL_DIR . 'tapahtuma.php';
-    $tapahtuma = haeTapahtuma($_GET['id']);
-    if ($tapahtuma) {
-        echo $templates->render('tapahtuma',['tapahtuma' => $tapahtuma]);
-    } else {
-        echo $templates->render('tapahtumanotfound');
-        }
-} else if ($request === '/lisaa_tili') {
-    echo $templates->render('lisaa_tili');
-} else {
-    echo $templates->render('notfound');
-} -->
+<!-- Testikäyttäjä:
+Murmeli Eerola
+namsnams@pahkina.com
+salasana: peruna
+-->
