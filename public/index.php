@@ -1,8 +1,15 @@
 <?php
 session_start();
-
-// Suoritetaan projektin alustusskripti:
 require_once '../src/init.php';
+
+// Tarkistetaan, onko käyttäjä kirjautunut sisälle eli 
+// onko käyttäjätunnuksen sisältävä istuntomuuttuja määritelty.
+if (isset($_SESSION['user'])) {
+    require_once MODEL_DIR . 'henkilo.php';
+    $loggeduser = haeHenkilo($_SESSION['user']);
+    } else {
+        $loggeduser = NULL;
+    }
 
 /*Tämä siistii urlin lyhemmäksi, ettei tuu järkkypitkää.*/ 
 $request=str_replace($config['urls']['baseUrl'],'',$_SERVER['REQUEST_URI']);
